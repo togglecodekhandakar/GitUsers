@@ -14,8 +14,6 @@
 
         public int public_repos { get; set; }
 
-
-
-        //public Address Address { get; set; }
+       public int avgFollowers { get; set; }
     }
 }

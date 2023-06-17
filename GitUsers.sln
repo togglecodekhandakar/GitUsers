@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitUsers.API", "GitUsers.API\GitUsers.API.csproj", "{49830FDD-6596-41E3-8548-948A921641B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitUsers.API", "GitUsers.API\GitUsers.API.csproj", "{49830FDD-6596-41E3-8548-948A921641B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitUsers.UnitTests", "GitUsers.UnitTests\GitUsers.UnitTests.csproj", "{ABFFC1CA-77EC-4DFD-8440-7102C46D7CD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitUsers.UnitTests", "GitUsers.UnitTests\GitUsers.UnitTests.csproj", "{ABFFC1CA-77EC-4DFD-8440-7102C46D7CD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

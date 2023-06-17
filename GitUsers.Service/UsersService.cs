@@ -2,13 +2,16 @@
 using System.Collections.Concurrent;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Json;
-using GitUsers.API.Models;
-using GitUsers.API.Config;
-using GitUsers.API.Services.Interface;
 
-namespace GitUsers.API.Services
+namespace GitUsers.Services
 {
-    
+    public interface IUsersService
+    {
+        public Task<List<User>> RetrieveUsers(List<string> usernames);
+
+       
+
+    }
 
     public class UsersService : IUsersService
     {
