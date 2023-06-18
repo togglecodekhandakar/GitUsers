@@ -1,5 +1,5 @@
 using GitUsers.API.Models;
-using GitUsers.API.Services;
+using GitUsers.API.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitUsers.API.Controllers

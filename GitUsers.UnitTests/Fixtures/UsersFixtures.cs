@@ -22,7 +22,9 @@ namespace GitUsers.UnitTests.Fixtures
                     login = "TestUser1",
                     company = "TestCompany1",
                     followers = 1,
-                    public_repos = 1
+                    public_repos = 1,
+                    avgFollowers = 1.0M
+
                 },
                 new User
                 {
@@ -32,7 +34,8 @@ namespace GitUsers.UnitTests.Fixtures
                     login = "TestUser2",
                     company = "TestCompany2",
                     followers = 2,
-                    public_repos = 2
+                    public_repos = 2,
+                    avgFollowers = 2.0M
                 },
                 new User
                 {
@@ -42,7 +45,8 @@ namespace GitUsers.UnitTests.Fixtures
                     login = "TestUser3",
                     company = "TestCompany3",
                     followers = 3,
-                    public_repos = 3
+                    public_repos = 3,
+                    avgFollowers = 3.0M
                 },
                 new User
                 {
@@ -52,9 +56,16 @@ namespace GitUsers.UnitTests.Fixtures
                     login = "TestUser4",
                     company = "TestCompany4",
                     followers = 4,
-                    public_repos = 4
+                    public_repos = 4,
+                    avgFollowers = 4.0M
                 },
 
             };
+
+        public static List<string> GetTestUsernames() =>
+            new() { "zhuangjiaju", "dangdang01234", "chenxian01", 
+                "jipengfei-jpf", "rullzer","MorrisJobke",
+                "nickvergessen","ameuleman",
+            "moodysalem", "haydenadams"};
     }
 }

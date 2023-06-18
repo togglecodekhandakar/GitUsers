@@ -1,12 +1,10 @@
 using FluentAssertions;
 using GitUsers.API.Controllers;
-using GitUsers.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Moq;
-using Xunit;
 using GitUsers.API.Models;
+using GitUsers.API.Services.Interface;
 using GitUsers.UnitTests.Fixtures;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 
 namespace GitUsers.UnitTests.Core.Controllers
 {

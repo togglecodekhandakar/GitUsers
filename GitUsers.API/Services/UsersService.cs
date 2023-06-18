@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using GitUsers.API.Models;
 using GitUsers.API.Config;
 using GitUsers.API.Services.Interface;
+using GitUsers.API.Services.BLL;
 
 namespace GitUsers.API.Services
 {
@@ -38,30 +39,40 @@ namespace GitUsers.API.Services
 
                 if (usersResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    return new User();
+                    return DataHelper.NotFoundUser();
                 }
                 var responseContent = usersResponse.Content;
-                var user1 = await responseContent.ReadFromJsonAsync<User>();
+                try
+                {
+                    var userRaw = await responseContent.ReadFromJsonAsync<User>();
+                    var userUpdated = DataHelper.CalculateAvgFollowers(userRaw);
+                    return userUpdated;
+                }
+                catch (Exception)
+                {
 
+                    return DataHelper.NotFoundUser();
+                }
+                
 
+                
 
-                Thread.Sleep(1000); // Do I need it?? try again without
-                return user1;
+                
             }
         }
         public async Task<List<User>> RetrieveUsers(List<string> usernames)
         {
-            
+            var usernamesDistinct = DataHelper.RemoveDuplicateEntry(usernames); 
             var parallellOption = new ParallelOptions { MaxDegreeOfParallelism = _apiConfig.MaxDegreeOfParallelism };
 
             //List<User> userDetails = new List<User>();    
             ConcurrentBag<User> userDetails = new ();
-             Parallel.ForEach(usernames, parallellOption,  username =>
+             Parallel.ForEach(usernamesDistinct, parallellOption,  username =>
             {
                 userDetails.Add( RetriveIndividualUser(username).GetAwaiter().GetResult());
             });
 
-            return userDetails.ToList();
+            return DataHelper.SortUserListAlphabetically(userDetails.ToList());
         }
     }
 }

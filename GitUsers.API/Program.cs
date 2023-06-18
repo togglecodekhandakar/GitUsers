@@ -1,6 +1,6 @@
 using GitUsers.API.Config;
-using GitUsers.API.Models;
 using GitUsers.API.Services;
+using GitUsers.API.Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 

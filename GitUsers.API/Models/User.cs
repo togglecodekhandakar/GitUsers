@@ -14,6 +14,6 @@
 
         public int public_repos { get; set; }
 
-       public int avgFollowers { get; set; }
+       public decimal avgFollowers { get; set; }
     }
 }

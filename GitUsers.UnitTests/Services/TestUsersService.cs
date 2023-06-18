@@ -27,14 +27,15 @@ namespace GitUsers.UnitTests.Services
             var endpoint = "https://example.com";
             var config = Options.Create(new GitApiOptions
             {
-                Endpoint = endpoint
+                Endpoint = endpoint,
+                MaxDegreeOfParallelism = 2
             });
 
             var sut = new UsersService(httpClient, config);
 
 
             //Act
-            await sut.RetrieveUsers(new List<string>());
+            await sut.RetrieveUsers(new List<string>() { "teststring"});
 
             //Assert
             handlerMock
@@ -58,7 +59,9 @@ namespace GitUsers.UnitTests.Services
             var endpoint = "https://example.com";
             var config = Options.Create(new GitApiOptions
             {
-                Endpoint = endpoint
+                Endpoint = endpoint,
+                MaxDegreeOfParallelism = 2
+                
             });
             var sut = new UsersService(httpClient, config);
 
@@ -82,17 +85,19 @@ namespace GitUsers.UnitTests.Services
             var endpoint = "https://example.com";
             var config = Options.Create(new GitApiOptions
             {
-                Endpoint = endpoint
+                Endpoint = endpoint,
+                MaxDegreeOfParallelism = 2
+                
             });
 
             var sut = new UsersService(httpClient, config);
 
 
             //Act
-            var result = await sut.RetrieveUsers(new List<string>());
+            var result = await sut.RetrieveUsers(UsersFixtures.GetTestUsernames());
 
             //Assert
-            result.Count.Should().Be(4);
+            result.Count.Should().Be(10);
         }
 
         [Fact]
@@ -107,7 +112,8 @@ namespace GitUsers.UnitTests.Services
 
             var config = Options.Create(new GitApiOptions
             {
-                Endpoint = endpoint
+                Endpoint = endpoint,
+                MaxDegreeOfParallelism = 2
             });
             var sut = new UsersService(httpClient, config);
 
@@ -121,7 +127,7 @@ namespace GitUsers.UnitTests.Services
                 .Protected()
                 .Verify(
                 "SendAsync",
-                Times.Exactly(1),
+                Times.Exactly(0),
                 ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get 
                 && req.RequestUri== uri),
                 ItExpr.IsAny<CancellationToken>()
